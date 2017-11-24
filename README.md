@@ -17,7 +17,7 @@ siguientes comandos:
         
  Para capturar y analizar el tráfico generado, utilizamos las herramientas tcpdump y wireshark respectivamente. La llamada concreta desde la máquina virtual es la siguiente:
  
-        tcpdum -i interface -w file
+        tcpdump -i interface -w file
         
  La salida obtenida se encuentra en [este repositorio](https://github.com/softportal/Bin/blob/master/broker.out).
  
@@ -56,7 +56,10 @@ Msg Len|3
 Message Identifier|1
 .... ..00 = Granted Qos|Fire and Forget (0)
 
-Una vez finalizado el proceso de subscripción, el publicante envía al subscrito las publicaciones relativas a los temas petinentes.
+Una vez finalizado el proceso de subscripción, el publicante envía al subscrito las publicaciones relativas a los temas pertinentes.
+
+
+**Ejercicio. Explicar los segmentos TCP y tramas ARP que se observan.**
 
 
 
