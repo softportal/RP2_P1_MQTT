@@ -1,6 +1,6 @@
 # RP2_P1_MQTT
 
-Repositorio para el desarrollo memoria de la práctica 1 de la asignatura RP2.
+Repositorio para el desarrollo y memoria de la práctica 1 de la asignatura RP2.
 
 ##  Capturando tráfico
 
@@ -56,10 +56,30 @@ Msg Len|3
 Message Identifier|1
 .... ..00 = Granted Qos|Fire and Forget (0)
 
-Una vez finalizado el proceso de subscripción, el publicante envía al subscrito las publicaciones relativas a los temas pertinentes.
+Una vez finalizado el proceso de subscripción, el publicante envía al subscrito las publicaciones relativas a los temas pertinentes, como podemos apreciar en el paquete 33.
 
 
 **Ejercicio. Explicar los segmentos TCP y tramas ARP que se observan.**
+
+|No|Time|Source|Destination|Protocol|Length|Info|
+|:--|:--:|:--:|:--:|:--|:--|:--:|
+5|0.180521|192.168.1.1|192.168.1.91|TCP|66|50066 → 22 [ACK] Seq=53 Ack=117 Win=608 Len=0 TSval=718032781 TSecr=159417
+8|1.768380|192.168.1.1|192.168.1.91|TCP|66|50066 → 22 [ACK] Seq=105 Ack=169 Win=608 Len=0 TSval=718033178 TSecr=159575
+9|1.785745|192.168.1.91|192.168.1.1|TCP|74|34564 → 1883 [SYN] Seq=0 Win=29200 Len=0 MSS=1460 SACK_PERM=1 TSval=159577 TSecr=0 WS=256
+10|1.785815|192.168.1.1|192.168.1.91|TCP|74|1883 → 34564 [SYN, ACK] Seq=0 Ack=1 Win=28960 Len=0 MSS=1460 SACK_PERM=1 TSval=718033181 TSecr=159577 WS=128
+11|1.787807|192.168.1.91|192.168.1.1|TCP|66|34564 → 1883 [ACK] Seq=1 Ack=1 Win=29440 Len=0 TSval=159577 TSecr=718033181
+13|1.789051|192.168.1.1|192.168.1.91|TCP|66|1883 → 34564 [ACK] Seq=1 Ack=36 Win=29056 Len=0 TSval=718033183 TSecr=159577
+15|1.791930|192.168.1.91|192.168.1.1|TCP|66|34564 → 1883 [ACK] Seq=36 Ack=5 Win=29440 Len=0 TSval=159578 TSecr=718033183
+18|1.829736|192.168.1.91|192.168.1.1|TCP|66|34564 → 1883 [ACK] Seq=49 Ack=10 Win=29440 Len=0 TSval=159582 TSecr=718033183
+34|16.317661|192.168.1.91|192.168.1.1|TCP|66|34564 → 1883 [ACK] Seq=49 Ack=25 Win=29440 Len=0 TSval=161030 TSecr=718036813
+36|16.318393|192.168.1.1|192.168.1.91|TCP|66|50066 → 22 [ACK] Seq=105 Ack=221 Win=608 Len=0 TSval=718036814 TSecr=161030
+
+
+
+
+
+
+
 
 
 
