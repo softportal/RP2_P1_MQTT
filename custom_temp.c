@@ -19,19 +19,27 @@ int main(void)
     int n;
 
     printf( "IP to pub:");
+    
+
+
+    //read from stdin
     scanf("%s", ip);
 
-    printf(command, "echo %s > hijodeputa", ip);
 
-    if (n > 0)
-        system(command);
 
     i2c_init();
     i2c_select_bus(MIKROBUS_1);
 
     thermo3_click_enable(0);
     thermo3_click_get_temperature(&temperature);
-    printf("temperature: %.3f degrees celsius\n", temperature);
+
+    
+    sprintf(command, "mosquitto_pub -h %s -p 1883 -t 'topic1' -m '%.3f' ", ip, temperature);
+
+    //execute command:
+    if (n > 0)
+        system(command);
+
     thermo3_click_disable();
 
     i2c_release();
