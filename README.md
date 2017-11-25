@@ -61,6 +61,8 @@ Una vez finalizado el proceso de subscripción, el publicante envía al subscrit
 
 **Ejercicio. Explicar los segmentos TCP y tramas ARP que se observan.**
 
+Aunque los protocolos MQTT y SSH funcionan sobre el protocolo de transporte TCP, entendemos que el objetivo de este ejercicio es analizar el resto de paquetes que se intercambian utilizando este protocolo.
+
 |No|Time|Source|Destination|Protocol|Length|Info|
 |:--|:--:|:--:|:--:|:--|:--|:--:|
 5|0.180521|192.168.1.1|192.168.1.91|TCP|66|50066 → 22 [ACK] Seq=53 Ack=117 Win=608 Len=0 TSval=718032781 TSecr=159417
@@ -74,8 +76,28 @@ Una vez finalizado el proceso de subscripción, el publicante envía al subscrit
 34|16.317661|192.168.1.91|192.168.1.1|TCP|66|34564 → 1883 [ACK] Seq=49 Ack=25 Win=29440 Len=0 TSval=161030 TSecr=718036813
 36|16.318393|192.168.1.1|192.168.1.91|TCP|66|50066 → 22 [ACK] Seq=105 Ack=221 Win=608 Len=0 TSval=718036814 TSecr=161030
 
+Al estar conectados por SSH la MV y el dispositivo periférico, por el mismo puerto que hemos escuchado con tcpdump, hemos capturado también los paquetes derivados de tal comunicación.
 
+Aplicando el filtro *!ssh*, eliminamos tales paquetes de la visualización en wireshark.
 
+Sin embargo, los dos primeros y el último segmento TCP que observamos, paquetes 5, 8 y 36 corresponden precisamente con confirmaciones a los paquetes SSH 4, 7 y 35 respectivamente, como podemos comprobar con el número de secuencia y longitud de estos paquetes SSH, y el de confirmación del TCP que los sucede.
+
+Los paquetes 9,10 y 11, corresponden con el establecimiento de sesión clásico de TCP (3 vías).
+
+Los paquetes 12-18 corresponden al establecimiento de sesión MQTT. Produciéndose envíos y confirmaciones a dos capas de red distintas (App y Transporte).
+
+Así la conexión MQTT solicitada en el paquete 12, es confirmada a nivel TCP en el 13 y a nivel MQTT en el 14, dicha confirmación MQTT es a su vez confirmada a nivel TCP en el paquete 15. En el paquete 17 en cambio se confirma a ambos niveles la subscripción (al topic1) solicitada en el 16. Dicha confirmación tambien es confirmada a nivel TCP en el 18.
+
+Los paquetes 33 y 34, son la publicación y confirmación del mensaje hello en el topic1.
+
+Los únicos paquetes ARP que hemos capturado:
+
+  |No.|Time|Source|Destination|Protocol|Length|Info|
+  |:--|:--:|:--:|:--:|:--|:--|:--:|
+  1|0.000000|CrispAut_3c:0c:99|Imaginat_89:12:36|ARP|42|Who has 192.168.1.91? Tell 192.168.1.1
+  2|0.015640|Imaginat_89:12:36|CrispAut_3c:0c:99|ARP|60|192.168.1.91 is at 00:19:f5:89:12:36
+  
+Corresponden a la MV preguntando por la MAC de la ci40, y a la respuesta a dicha pregunta.
 
 
 
