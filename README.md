@@ -101,6 +101,10 @@ Corresponden a la MV preguntando por la MAC de la ci40, y a la respuesta a dicha
 
 
 
+![picture](https://raw.githubusercontent.com/softportal/RP2_P1_MQTT/master/picture.png)
+
+
+
 
 
 
