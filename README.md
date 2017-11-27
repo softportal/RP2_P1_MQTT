@@ -1,6 +1,11 @@
 # RP2_P1_MQTT
 
-Repositorio para el desarrollo y memoria de la práctica 1 de la asignatura RP2.
+## Alumnos
+
+Sergio Semedi Barranco
+
+Lucas Segarra Fernández
+
 
 ##  Capturando tráfico
 
@@ -63,7 +68,7 @@ Una vez finalizado el proceso de subscripción, el publicante envía al subscrit
 
 Aunque los protocolos MQTT y SSH funcionan sobre el protocolo de transporte TCP, entendemos que el objetivo de este ejercicio es analizar el resto de paquetes que se intercambian utilizando este protocolo.
 
-![picture](https://raw.githubusercontent.com/softportal/RP2_P1_MQTT/master/tabla1.png)
+![tcp frames](https://raw.githubusercontent.com/softportal/RP2_P1_MQTT/master/tabla1.png)
 
 Al estar conectados por SSH la MV y el dispositivo periférico, por el mismo puerto que hemos escuchado con tcpdump, hemos capturado también los paquetes derivados de tal comunicación.
 
@@ -81,7 +86,7 @@ Los paquetes 33 y 34, son la publicación y confirmación del mensaje hello en e
 
 Los únicos paquetes ARP que hemos capturado:
 
-![picture](https://raw.githubusercontent.com/softportal/RP2_P1_MQTT/master/tabla2.png)
+![ARP frames](https://raw.githubusercontent.com/softportal/RP2_P1_MQTT/master/tabla2.png)
   
 Corresponden a la MV preguntando por la MAC de la ci40, y a la respuesta a dicha pregunta.
 
@@ -92,7 +97,7 @@ misma máquina virtual) y estudiaremos el tráfico generado con wireshark.**
 
 La siguiente imagen corresponde con una captura de pantalla de wireshark con la topología propuesta.
 
-![picture](https://raw.githubusercontent.com/softportal/RP2_P1_MQTT/master/picture.png)
+![captura mqtt ci40](https://raw.githubusercontent.com/softportal/RP2_P1_MQTT/master/picture.png)
 
 El fichero obtenido se encuentra en este repositorio.
 
@@ -107,7 +112,7 @@ Msg Len|14
 Topic|topic1
 Message|27.312
 
-![picture](https://raw.githubusercontent.com/softportal/RP2_P1_MQTT/master/app_pic.png)
+![publish message](https://raw.githubusercontent.com/softportal/RP2_P1_MQTT/master/app_pic.png)
 
 
 
