@@ -114,6 +114,16 @@ Como podemos observar la comunicación MQTT es análoga a la estudiada en el eje
 
 Observamos el contenido de la capa MQTT del paquete 181, que contiene un único campo publish mesaje con la siguiente información:
 
+|Field|Data|
+|:--|:--:|
+0011 0000 = Header Flags|0x30 (Publish Message)
+Msg Len|14
+Topic|topic1
+Message|27.312
+
+
+
+
 
 
 
