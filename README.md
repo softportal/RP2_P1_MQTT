@@ -63,24 +63,7 @@ Una vez finalizado el proceso de subscripción, el publicante envía al subscrit
 
 Aunque los protocolos MQTT y SSH funcionan sobre el protocolo de transporte TCP, entendemos que el objetivo de este ejercicio es analizar el resto de paquetes que se intercambian utilizando este protocolo.
 
--No-Time-Source-Destination-Protocol-Length-Info-
-
--:---:--:-:--:-:--:-:---:---:--:-
-
-5-0.180521-192.168.1.1-192.168.1.91-TCP-66-50066 → 22 [ACK] Seq=53 Ack=117 Win=608 Len=0 TSval=718032781 TSecr=159417
-
-8-1.768380-192.168.1.1-192.168.1.91-TCP-66-50066 → 22 [ACK] Seq=105 Ack=169 Win=608 Len=0 TSval=718033178 TSecr=159575
-
-9-1.785745-192.168.1.91-192.168.1.1-TCP-74-34564 → 1883 [SYN] Seq=0 Win=29200 Len=0 MSS=1460 SACK_PERM=1 TSval=159577 TSecr=0 WS=256
-
-10-1.785815-192.168.1.1-192.168.1.91-TCP-74-1883 → 34564 [SYN, ACK] Seq=0 Ack=1 Win=28960 Len=0 MSS=1460 SACK_PERM=1 TSval=718033181 TSecr=159577 WS=128
-
-11-1.787807-192.168.1.91-192.168.1.1-TCP-66-34564 → 1883 [ACK] Seq=1 Ack=1 Win=29440 Len=0 TSval=159577 TSecr=718033181
-13-1.789051-192.168.1.1-192.168.1.91-TCP-66-1883 → 34564 [ACK] Seq=1 Ack=36 Win=29056 Len=0 TSval=718033183 TSecr=159577
-15-1.791930-192.168.1.91-192.168.1.1-TCP-66-34564 → 1883 [ACK] Seq=36 Ack=5 Win=29440 Len=0 TSval=159578 TSecr=718033183
-18-1.829736-192.168.1.91-192.168.1.1-TCP-66-34564 → 1883 [ACK] Seq=49 Ack=10 Win=29440 Len=0 TSval=159582 TSecr=718033183
-34-16.317661-192.168.1.91-192.168.1.1-TCP-66-34564 → 1883 [ACK] Seq=49 Ack=25 Win=29440 Len=0 TSval=161030 TSecr=718036813
-36-16.318393-192.168.1.1-192.168.1.91-TCP-66-50066 → 22 [ACK] Seq=105 Ack=221 Win=608 Len=0 TSval=718036814 TSecr=161030
+![picture](https://raw.githubusercontent.com/softportal/RP2_P1_MQTT/master/tabla1.png)
 
 Al estar conectados por SSH la MV y el dispositivo periférico, por el mismo puerto que hemos escuchado con tcpdump, hemos capturado también los paquetes derivados de tal comunicación.
 
@@ -98,10 +81,7 @@ Los paquetes 33 y 34, son la publicación y confirmación del mensaje hello en e
 
 Los únicos paquetes ARP que hemos capturado:
 
-  -No.-Time-Source-Destination-Protocol-Length-Info-
-  -:---:--:-:--:-:--:-:---:---:--:-
-  1-0.000000-CrispAut_3c:0c:99-Imaginat_89:12:36-ARP-42-Who has 192.168.1.91? Tell 192.168.1.1
-  2-0.015640-Imaginat_89:12:36-CrispAut_3c:0c:99-ARP-60-192.168.1.91 is at 00:19:f5:89:12:36
+![picture](https://raw.githubusercontent.com/softportal/RP2_P1_MQTT/master/tabla2.png)
   
 Corresponden a la MV preguntando por la MAC de la ci40, y a la respuesta a dicha pregunta.
 
