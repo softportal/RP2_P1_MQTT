@@ -99,9 +99,20 @@ Los únicos paquetes ARP que hemos capturado:
   
 Corresponden a la MV preguntando por la MAC de la ci40, y a la respuesta a dicha pregunta.
 
+**En esta práctica se propone realizar un programa que publique la temperatura del sensor a través de MQTT. Para ello solicitaremos la ip y el topic por consola y realizaremos la publicación desde la Ci40.**
 
+**Para comprobar el correcto funcionamiento nos suscribiremos desde un cliente MQTT (la
+misma máquina virtual) y estudiaremos el tráfico generado con wireshark.**
+
+La siguiente imagen corresponde con una captura de pantalla de wireshark con la topología propuesta.
 
 ![picture](https://raw.githubusercontent.com/softportal/RP2_P1_MQTT/master/picture.png)
+
+El fichero obtenido se encuentra en este repositorio.
+
+Como podemos observar la comunicación MQTT es análoga a la estudiada en el ejercicio anterior. Como requisito de este ejercico se publica la temperatura detectada a través del sensor desde la ci40.
+
+Observamos el contenido de la capa MQTT del paquete 181, que contiene un único campo publish mesaje con la siguiente información:
 
 
 
